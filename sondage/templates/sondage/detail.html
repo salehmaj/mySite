@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="{%url 'vote' question.id%}" method="post">
+    <form action="{%url 'sondage:vote' question.id%}" method="post">
     {%csrf_token%}
     <fieldset>
         <legend><h1>{{question.question_text}}</h1></legend>
@@ -20,5 +20,7 @@
     </fieldset>
     <input type="submit" value="Vote">
     </form>
+    <br>
+    <p><a href="{%url 'logout'%}">Log out</a></p>
 </body>
 </html>

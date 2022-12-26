@@ -11,6 +11,8 @@
       <li> {{choice.choice_text}} -- {{choice.votes}} vote</li>
     {%endfor%}
   </ul>
-    <a href="{%url 'detail' question.id%}">Vote encore</a>
+    <a href="{%url 'sondage:detail' question.id%}">Vote encore</a>
+  <br>
+  <p><a href="{%url 'logout'%}">Log out</a></p>
 </body>
 </html>
