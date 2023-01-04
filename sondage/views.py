@@ -3,14 +3,14 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import loader
 from django.urls import reverse
+from django.utils import timezone
 
 from sondage.models import Question, Choice
 
 # Create your views here.
 
-@login_required(login_url='/accounts/login/')
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    latest_question_list = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
     template = loader.get_template('sondage/index.html')
     context = {'latest_question_list': latest_question_list}
     return HttpResponse(template.render(context, request))
